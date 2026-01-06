@@ -1,0 +1,13 @@
+{
+    "name": "file-server",
+    "version": "1.0.0",
+    "description": "Simple backend for large file streaming",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5"
+    }
+}
