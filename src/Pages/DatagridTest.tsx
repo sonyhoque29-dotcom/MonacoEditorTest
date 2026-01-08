@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
-import { Box, Typography, IconButton, Stack } from '@mui/material';
+import { Box, Stack, Typography, IconButton, Grid, Container } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -238,127 +238,62 @@ const DatagridTest: React.FC = () => {
     ];
 
     return (
-        <Box
-            sx={{
-                width: '100%',
-                height: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-                overflow: 'hidden',
-                boxSizing: 'border-box',
-                pt: 4,
-                pr: '30px',
-                pb: 4,
-                pl: 8,
-                background: 'linear-gradient(to bottom, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-        >
-            {/* YanN Header */}
-            <Typography
-                variant="h3"
-                component="h1"
-                sx={{
-                    fontWeight: 700,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    mb: 2,
-                    mt: 1,
-                    py: 1,
-                    textAlign: 'center',
-                    flexShrink: 0,
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                    marginBottom: '60px',
-                }}
-            >
-                YangN
-            </Typography>
-
+        <Container maxWidth="xl" sx={{ py: 6, height: '100vh', display: 'flex', flexDirection: 'column' }}>
             {/* All 4 DataGrids in a 2x2 Grid Layout - Full Height */}
-            <Box
+            <Grid
+                container
+                spacing={3}
                 sx={{
-                    display: 'grid',
-                    gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-                    gap: 2,
                     flex: 1,
                     minHeight: 0,
-                    p: 1,
+                    height: '100%', // Ensure container has height
                 }}
             >
-                {/* Left Column - Favourite */}
-                <Stack spacing={2} sx={{ minHeight: 0 }}>
-                    {/* Favourite Section Title */}
-                    <Stack direction="row" spacing={1} alignItems="center">
-                        <FavoriteIcon sx={{ color: '#e91e63', fontSize: 28 }} />
-                        <Typography
-                            variant="h5"
-                            sx={{
-                                fontWeight: 700,
-                                color: '#333',
-                                letterSpacing: '0.5px',
-                            }}
-                        >
-                            Favourite
-                        </Typography>
-                    </Stack>
-
-                    {/* DataGrid1 */}
-                    <Box sx={{ flex: 1, minHeight: 0 }}>
+                {/* DataGrid1 - Projects */}
+                <Grid size={{ xs: 6 }} sx={{ height: '50%', minHeight: 0 }}>
+                    <Stack sx={{ height: '100%', width: '100%' }}>
                         <DataGridCard
                             title="DataGrid1 - Projects"
                             rowData={rowData1}
                             columnDefs={columnDefs}
                         />
-                    </Box>
-
-                    {/* DataGrid3 */}
-                    <Box sx={{ flex: 1, minHeight: 0 }}>
-                        <DataGridCard
-                            title="DataGrid3 - Recent Items"
-                            rowData={rowData3}
-                            columnDefs={columnDefs}
-                        />
-                    </Box>
-                </Stack>
-
-                {/* Right Column - Recent */}
-                <Stack spacing={2} sx={{ minHeight: 0 }}>
-                    {/* Recent Section Title */}
-                    <Stack direction="row" spacing={1} alignItems="center">
-                        <AccessTimeIcon sx={{ color: '#2196f3', fontSize: 28 }} />
-                        <Typography
-                            variant="h5"
-                            sx={{
-                                fontWeight: 700,
-                                color: '#333',
-                                letterSpacing: '0.5px',
-                            }}
-                        >
-                            Recent
-                        </Typography>
                     </Stack>
+                </Grid>
 
-                    {/* DataGrid2 */}
-                    <Box sx={{ flex: 1, minHeight: 0 }}>
+                {/* DataGrid2 - Tasks */}
+                <Grid size={{ xs: 6 }} sx={{ height: '50%', minHeight: 0 }}>
+                    <Stack sx={{ height: '100%', width: '100%' }}>
                         <DataGridCard
                             title="DataGrid2 - Tasks"
                             rowData={rowData2}
                             columnDefs={columnDefs}
                         />
-                    </Box>
+                    </Stack>
+                </Grid>
 
-                    {/* DataGrid4 */}
-                    <Box sx={{ flex: 1, minHeight: 0 }}>
+                {/* DataGrid3 - Recent Items */}
+                <Grid size={{ xs: 6 }} sx={{ height: '50%', minHeight: 0 }}>
+                    <Stack sx={{ height: '100%', width: '100%' }}>
+                        <DataGridCard
+                            title="DataGrid3 - Recent Items"
+                            rowData={rowData3}
+                            columnDefs={columnDefs}
+                        />
+                    </Stack>
+                </Grid>
+
+                {/* DataGrid4 - Latest Entries */}
+                <Grid size={{ xs: 6 }} sx={{ height: '50%', minHeight: 0 }}>
+                    <Stack sx={{ height: '100%', width: '100%' }}>
                         <DataGridCard
                             title="DataGrid4 - Latest Entries"
                             rowData={rowData4}
                             columnDefs={columnDefs}
                         />
-                    </Box>
-                </Stack>
-            </Box>
-        </Box>
+                    </Stack>
+                </Grid>
+            </Grid>
+        </Container>
     );
 };
 
